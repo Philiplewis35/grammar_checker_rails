@@ -1,2 +1,22 @@
-%h1 Home
-%p Lorem ipsum...
+%h1 Grammar Checker
+%p Add grammar checker APIs here
+
+= form_with(url: user_services_path(@user), method: :post) do
+  = text_field :service, :base_url, {placeholder: 'Enter URL'}
+  = submit_tag 'Save', class: 'btn btn-primary btn-sm'
+
+%h2.mt-3 Current services
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th URL
+      %th
+  %tbody
+    - @user.services.each do |service|
+      %tr
+        %td= Net::HTTP.get(URI("#{service.base_url}name"))
+        %td= Net::HTTP.get(URI("#{service.base_url}description"))
+        %td= link_to service.base_url, service.base_url
+        %td edit delete
