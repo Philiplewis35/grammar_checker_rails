@@ -1,11 +1,20 @@
-%h1 Grammar Checker
-%p Add grammar checker APIs here
+%h1.mt-2 Home
+%p This is a grammar checker framework - add external grammar checking services, and install have your grammar checked on your writing tool of choice
+%h2.mt-4 Add your own service
+-# %p
+-#   Add grammar checker APIs here
+-#   %span{style: 'color: red;'} (at your own risk)
+-# = form_with(url: user_user_services_path(@user), method: :post) do
+-#   = text_field :service, :base_url, {placeholder: 'Enter URL'}
+-#   = submit_tag 'Save', class: 'btn btn-primary ml-2'
 
-= form_with(url: user_services_path(@user), method: :post) do
-  = text_field :service, :base_url, {placeholder: 'Enter URL'}
-  = submit_tag 'Save', class: 'btn btn-primary btn-sm'
+%h2.mt-4 Use exsisting services
+%p Browse existing (verified) grammar checkers to use
+= form_with(url: user_add_services_path(@user), method: :post) do
+  = select_tag :services, options_from_collection_for_select(@services, "id", "name"), { multiple: true, class: 'select_services' }
+  = submit_tag 'Save', class: 'btn btn-primary ml-2'
 
-%h2.mt-3 Current services
+%h2.mt-4 Your current services
 %table.table
   %thead
     %tr
@@ -16,7 +25,7 @@
   %tbody
     - @user.services.each do |service|
       %tr
-        %td= Net::HTTP.get(URI("#{service.base_url}name"))
-        %td= Net::HTTP.get(URI("#{service.base_url}description"))
+        %td= service.name
+        %td= service.description
         %td= link_to service.base_url, service.base_url
-        %td edit delete
+        %td= link_to 'remove', user_remove_service_path(@user, service), method: :post
