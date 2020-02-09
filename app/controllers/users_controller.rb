@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       UserService.find_or_create_by!(user_id: user.id, service_id: service.id)
     end
     flash[:notice]= 'Services Added'
-    redirect_to authenticated_root_path
+    redirect_to root_path
   end
 
   def remove_service
@@ -15,6 +15,6 @@ class UsersController < ApplicationController
     service = Service.find(params[:service_id])
     UserService.find_by!(user_id: user.id, service_id: service.id).destroy!
     flash[:notice]= 'Service Removed'
-    redirect_to authenticated_root_path
+    redirect_to root_path
   end
 end

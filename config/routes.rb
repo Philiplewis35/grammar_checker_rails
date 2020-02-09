@@ -11,13 +11,6 @@ Rails.application.routes.draw do
     post 'remove_service/:service_id', to: 'users#remove_service', as: 'remove_service'
   end
 
-  devise_scope :user do
-    authenticated :user do
-      root 'home#show', as: :authenticated_root
-    end
+  root to: 'home#show'
 
-    unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
-    end
-  end
 end

@@ -1,5 +1,5 @@
 %nav.navbar.navbar-expand-lg.navbar-light.bg-light
   %a.navbar-brand Grammar Checker
   .navbar-nav
-    = link_to 'Home', authenticated_root_path, class: 'nav-item nav-link'
+    = link_to 'Home', root_path, class: 'nav-item nav-link'
     = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-item nav-link'
