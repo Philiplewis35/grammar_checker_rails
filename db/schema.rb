@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_02_08_213402) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "services", force: :cascade do |t|
     t.string "base_url"
     t.datetime "created_at", precision: 6, null: false
