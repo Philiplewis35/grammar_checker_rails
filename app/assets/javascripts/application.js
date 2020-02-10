@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 function send_services_to_chrome_extension(user_id) {
   $.get("/users/" + user_id + "/services", {}, function(response) {
-    window.postMessage({type: 'FROM_PAGE', user_id: 1, services: response})
+    window.postMessage({type: 'FROM_PAGE', user_id: 1, services: response}, "*")
     console.log('test')
   })
 }
