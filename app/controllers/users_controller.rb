@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  def services
+    user = User.find(params[:user_id])
+    render json: user.services.map(&:base_url)
+  end
+
   def add_services
     user = User.find(params[:user_id])
     params[:services].each do |service_id|

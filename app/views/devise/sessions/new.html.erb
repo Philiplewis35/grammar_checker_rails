@@ -18,6 +18,8 @@
     </div>
   <% end %>
 
+  <%= hidden_field :external_field, :external, value: params[:external] %>
+
   <div class="actions">
     <%= f.submit "Log in" %>
   </div>
