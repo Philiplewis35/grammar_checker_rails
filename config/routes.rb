@@ -13,4 +13,10 @@ Rails.application.routes.draw do
 
   root to: 'home#show'
 
+  namespace :api do
+    namespace :v1 do
+      get 'user/:id/services', to: 'users#services', as: 'api_get_user_services'
+    end
+  end
+
 end
