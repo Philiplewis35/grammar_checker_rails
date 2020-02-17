@@ -5,8 +5,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def services
-    @user = User.find(user_params[:id])
-    @services = @user.services.map(&:base_url)
+    @services = current_user.services.map(&:base_url)
     render json: @services, status: :ok
   rescue
     head(:unprocessable_entity)

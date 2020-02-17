@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      get 'user/:id/services', to: 'users#services', as: 'api_get_user_services'
+      get 'user/services', to: 'users#services', as: 'api_get_user_services'
     end
   end
 
