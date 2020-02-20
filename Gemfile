@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'awesome_print'
 gem 'pry'
 gem 'rack-cors'
+gem 'simple_token_authentication'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'

@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      get 'user/services', to: 'users#services', as: 'api_get_user_services'
+      post 'sign_in', to: 'sessions#create', as: 'sign_in'
+      delete 'sign_out/:id', to: 'sessions#destroy', as: 'sign_out'
+      get 'services/index', to: 'services#index', as: 'services'
     end
   end
 
