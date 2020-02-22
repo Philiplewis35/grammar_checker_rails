@@ -1,9 +1,10 @@
 class Api::V1::SessionsController < ApplicationController
-  protect_from_forgery except: :create
+  skip_before_action :verify_authenticity_token
+
   def create # sign in
     user = User.find_by(email: params[:email])
 
-    if user && user.valid_password?(params[:password])
+    if user&.valid_password?(params[:password])
       render json: user.as_json(only: [:id, :email, :authentication_token]), status: :created
     else
       head(:unauthorized)
@@ -11,8 +12,8 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def destroy # sign out
-    current_user && current_user.authentication_token = nil
-    if current_user.save
+    current_user&.authentication_token = nil
+    if current_user&.save
       head(:ok)
     else
       head(:unauthorized)
