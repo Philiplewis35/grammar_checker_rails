@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'sign_in', to: 'sessions#create', as: 'sign_in'
       delete 'sign_out/', to: 'sessions#destroy', as: 'sign_out'
+      get 'session_status', to: 'sessions#session_status', as: 'status'
       get 'services', to: 'services#index', as: 'services'
     end
   end

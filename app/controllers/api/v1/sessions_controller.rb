@@ -19,4 +19,8 @@ class Api::V1::SessionsController < ApplicationController
       head(:unauthorized)
     end
   end
+
+  def session_status
+    current_user ? head(:ok) : head(:not_found)
+  end
 end
