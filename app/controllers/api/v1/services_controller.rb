@@ -1,5 +1,10 @@
 class Api::V1::ServicesController < ApplicationController
   def index
-    render json: current_user.services.map(&:base_url), status: :ok
+    services = current_user&.services&.map(&:base_url)
+    if services
+      render json: services, status: :ok
+    else
+      head(:unauthorized)
+    end
   end
 end
