@@ -11,9 +11,17 @@ Feature: An Admin can manage services
     Then I expect to see "Passive voice detector"
 
   @service_exists
-  Scenario: Admin can remove a serice
+  Scenario: Admin can remove a service
     When I visit "/admin/services"
     Then I expect to see "Passive voice detector"
     When I click the link "delete"
     Then I expect to see "Service Destroyed"
     And I cannot see "Passive voice detector"
+
+  @bob_exists
+  Scenario: Bob cannot access the admin page
+    When I log out
+    And I log in as "bob@example.com"
+    When I visit "/admin/services"
+    Then I expect to see "You do not have the correct permissions to access that page"
+    Then I expect to see "Browse existing (verified) grammar checkers to use"
