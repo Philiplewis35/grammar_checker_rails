@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   root to: 'home#show'
 
+  get '/about', to: 'home#about', as: 'about'
+
   namespace :api do
     namespace :v1 do
       post 'sign_in', to: 'sessions#create', as: 'sign_in'
