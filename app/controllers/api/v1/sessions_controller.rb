@@ -12,8 +12,8 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def destroy # sign out
-    current_user&.authentication_token = nil
-    if current_user&.save
+    find_user&.authentication_token = nil
+    if find_user&.save
       head(:ok)
     else
       head(:unauthorized)
@@ -21,6 +21,12 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def session_status
-    current_user ? head(:ok) : head(:not_found)
+    find_user ? head(:ok) : head(:not_found)
+  end
+
+  private
+
+  def find_user
+    User.find_by(email: request.env['HTTP_X_USER_EMAIL'], authentication_token: request.env['HTTP_X_USER_TOKEN'])
   end
 end
