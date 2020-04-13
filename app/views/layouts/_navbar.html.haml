@@ -1,13 +1,10 @@
 .navbar.ml-0.pl-0
   .card.w-100.border-0.bg-light
     .row.m-1
-      .col-3.mt-1.p-0.pl-1
-        %h4 Grammar Checker
-      .col-1.px-0.pt-2
-        = link_to 'Home', root_path, class: 'navbar_item'
-      .col-6.p-0.pt-2.pl-1
-        = link_to 'About', about_path, class: 'navbar_item'
-      .col-2.p-0.pt-2
+      .col-12.mt-1.p-0.pl-1
+        %h5.d-inline Grammar Services Repository
+        = link_to 'Home', root_path, class: 'pl-3 navbar_item'
+        = link_to 'About', about_path, class: 'pl-3 navbar_item'
         .float-right
           - if current_user
             = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'navbar_item pr-3'
