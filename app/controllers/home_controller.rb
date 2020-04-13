@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
   def show
     @user = current_user
-    @services = Service.all
+    @services = Service.all - @user.services
   end
 
   def about
