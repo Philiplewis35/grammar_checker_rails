@@ -1,4 +1,15 @@
 %h1.mt-2 About
 %p This is an open source grammar checker, the following writing tools are supported:
-%ul#selector
+%ul
   %li Google Docs (Google Chrome Extension)
+%h2 Development
+%p To create a grammar service of your own, write a programme that returns an array containing hashes of the following json structure:
+%ul
+  %li phrase (string) - The phrase to be underlined in the user's writing.
+  %li explanation (string) - An explanation of why the phrase has been underlined
+  %li replacement (string) - A reccomended replacement string to rectify the underlined phrase
+  %li substution (boolean) - Whether a valid remidial string has been offered
+
+%p
+  n.b. The service will be sent the user's writing in a string paramter 'text'. This paramter may
+  contain hidden characters, and may contain multiple sentences.

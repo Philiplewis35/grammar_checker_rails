@@ -11,7 +11,7 @@
 
 %p Browse existing (verified) grammar checkers to use
 = form_with(url: user_add_services_path(@user), method: :post) do
-  = select_tag :services, options_from_collection_for_select(@services, "id", "name"), { multiple: true, class: 'select_services' }
+  = select_tag :services, options_from_collection_for_select(@services, "id", "name"), { multiple: true, class: 'select_services w-50' }
   = submit_tag 'Save', class: 'btn btn-primary ml-2 save_services'
 
 %h2.mt-4 Your current services
